@@ -2,7 +2,7 @@
 #!desc=Logs request bodies for my API only
 
 [Script]
-capture-request = type=http-request,pattern=^https:\/\/ichigo-rel\.nianticlabs\.com\/,requires-body=1,script-path=https://raw.githubusercontent.com/silashsieh/shadowrocket-experiment/refs/heads/agent/request-body-capture/capture-request.js
+capture-request = type=http-request,pattern=^https:\/\/ichigo-rel\.nianticlabs\.com\/,requires-body=1,script-path=https://raw.githubusercontent.com/silashsieh/shadowrocket-experiment/refs/heads/main/capture-request.js
 
 [MITM]
 hostname = %APPEND% ichigo-rel.nianticlabs.com
