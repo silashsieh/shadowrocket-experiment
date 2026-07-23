@@ -1,9 +1,17 @@
 #!name=Request Body Capture
-#!desc=Logs request bodies for my API only
+#!desc=Logs selected Niantic request bodies and ichigo server responses
 
 [Script]
-capture-request = type=http-request,pattern=^https:\/\/ichigo-rel\.nianticlabs\.com\/,requires-body=1,script-path=https://raw.githubusercontent.com/silashsieh/shadowrocket-experiment/refs/heads/main/capture-request.js
+capture-request-ichigo = type=http-request,pattern=^https:\/\/ichigo-rel\.nianticlabs\.com\/,requires-body=1,script-path=https://raw.githubusercontent.com/silashsieh/shadowrocket-experiment/refs/heads/main/capture-request.js
+capture-request-gameclientconfig = type=http-request,pattern=^https:\/\/identity-public\.nianticlabs\.com\/gameclientconfig\/?(?:\?.*)?$,requires-body=1,script-path=https://raw.githubusercontent.com/silashsieh/shadowrocket-experiment/refs/heads/main/capture-request.js
+capture-request-identity = type=http-request,pattern=^https:\/\/identity\.nianticlabs\.com\/(?:token-service|auth-telemetry)\/?(?:\?.*)?$,requires-body=1,script-path=https://raw.githubusercontent.com/silashsieh/shadowrocket-experiment/refs/heads/main/capture-request.js
+capture-request-analytics = type=http-request,pattern=^https:\/\/analytics\.nianticlabs\.com\/,requires-body=1,script-path=https://raw.githubusercontent.com/silashsieh/shadowrocket-experiment/refs/heads/main/capture-request.js
+capture-request-hsrd-rel = type=http-request,pattern=^https:\/\/hsrd-rel\.nianticlabs\.com\/,requires-body=1,script-path=https://raw.githubusercontent.com/silashsieh/shadowrocket-experiment/refs/heads/main/capture-request.js
+capture-request-account-assets = type=http-request,pattern=^https:\/\/platform-account-assets\.nianticlabs\.com\/prod\/output_proto_path\.pb(?:\?.*)?$,requires-body=1,script-path=https://raw.githubusercontent.com/silashsieh/shadowrocket-experiment/refs/heads/main/capture-request.js
+capture-request-social-api = type=http-request,pattern=^https:\/\/niantic-social-api\.nianticlabs\.com\/,requires-body=1,script-path=https://raw.githubusercontent.com/silashsieh/shadowrocket-experiment/refs/heads/main/capture-request.js
+capture-request-niantic-social = type=http-request,pattern=^https:\/\/niantic-social\.nianticlabs\.com\/,requires-body=1,script-path=https://raw.githubusercontent.com/silashsieh/shadowrocket-experiment/refs/heads/main/capture-request.js
+capture-request-social = type=http-request,pattern=^https:\/\/social\.nianticlabs\.com\/,requires-body=1,script-path=https://raw.githubusercontent.com/silashsieh/shadowrocket-experiment/refs/heads/main/capture-request.js
 capture-response = type=http-response,pattern=^https:\/\/ichigo-rel\.nianticlabs\.com\/,requires-body=1,script-path=https://raw.githubusercontent.com/silashsieh/shadowrocket-experiment/refs/heads/main/capture-response.js
 
 [MITM]
-hostname = %APPEND% ichigo-rel.nianticlabs.com
+hostname = %APPEND% ichigo-rel.nianticlabs.com, identity-public.nianticlabs.com, identity.nianticlabs.com, analytics.nianticlabs.com, hsrd-rel.nianticlabs.com, platform-account-assets.nianticlabs.com, niantic-social-api.nianticlabs.com, niantic-social.nianticlabs.com, social.nianticlabs.com
